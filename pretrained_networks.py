@@ -30,7 +30,7 @@ gdrive_urls = {
     'gdrive:networks/stylegan2-ffhq-config-d.pkl':                          'http://d36zk2xti64re0.cloudfront.net/stylegan2/networks/stylegan2-ffhq-config-d.pkl',
     'gdrive:networks/stylegan2-ffhq-config-e.pkl':                          'http://d36zk2xti64re0.cloudfront.net/stylegan2/networks/stylegan2-ffhq-config-e.pkl',
 # 'gdrive:networks/stylegan2-ffhq-config-f.pkl':                          'http://d36zk2xti64re0.cloudfront.net/stylegan2/networks/stylegan2-ffhq-config-f.pkl',
-    'gdrive:networks/stylegan2-ffhq-config-f.pkl':                          '.\models\generator_yellow-stylegan2-config-f.pkl',
+    'gdrive:networks/stylegan2-ffhq-config-f.pkl':                          './models/generator_yellow-stylegan2-config-f.pkl',
     'gdrive:networks/stylegan2-horse-config-a.pkl':                         'http://d36zk2xti64re0.cloudfront.net/stylegan2/networks/stylegan2-horse-config-a.pkl',
     'gdrive:networks/stylegan2-horse-config-f.pkl':                         'http://d36zk2xti64re0.cloudfront.net/stylegan2/networks/stylegan2-horse-config-f.pkl',
     'gdrive:networks/table2/stylegan2-car-config-e-Gorig-Dorig.pkl':        'http://d36zk2xti64re0.cloudfront.net/stylegan2/networks/table2/stylegan2-car-config-e-Gorig-Dorig.pkl',
