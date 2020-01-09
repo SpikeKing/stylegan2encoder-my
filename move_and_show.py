@@ -105,7 +105,7 @@ def main():
 
     # 读取对应真实人脸的latent，用于图像变化，qing_01.npy可以替换为你自己的文件名
     os.makedirs(config.dlatents_dir, exist_ok=True)
-    person = np.load(os.path.join(config.dlatents_dir, 'qing_01.npy'))
+    person = np.load(os.path.join(config.dlatents_dir, 'aoa-mina_01.npy'))
 
     # 读取已训练好的用于改变人脸特性/表情的向量
     # 包括：改变年龄、改变水平角度、改变性别、改变眼睛大小、是否佩戴眼镜、改变笑容等
