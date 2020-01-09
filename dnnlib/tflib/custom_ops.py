@@ -68,6 +68,9 @@ def _prepare_nvcc_cli(opts):
     cmd += ' --include-path "%s"' % os.path.join(tf.sysconfig.get_include(), 'external', 'com_google_absl')
     cmd += ' --include-path "%s"' % os.path.join(tf.sysconfig.get_include(), 'external', 'eigen_archive')
 
+    cmd += ' -std=c++11'
+    cmd += ' -DNDEBUG'
+
     compiler_bindir = _find_compiler_bindir()
     if compiler_bindir is None:
         # Require that _find_compiler_bindir succeeds on Windows.  Allow
