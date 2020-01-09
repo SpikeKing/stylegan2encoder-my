@@ -76,8 +76,11 @@ def move_and_show(generator, flag, latent_vector, direction, coeffs):
             filename = 'new_glasses.{}.png'
         if flag == 5:
             filename = 'new_smile.{}.png'
+
+        out_filename = filename.format(str(coeff))
+        print('[Info] out filename: {}'.format(out_filename))
         # 将生成的图像保存到文件
-        canvas.save(os.path.join(config.result_dir, filename.format(str(coeff))))
+        canvas.save(os.path.join(config.result_dir, out_filename))
 
         # 人脸latent与改变人脸特性/表情的向量相混合，只运算前8层（一共18层）
         # new_latent_vector[:8] = (latent_vector + coeff * direction)[:8]
