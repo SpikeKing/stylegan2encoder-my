@@ -57,13 +57,35 @@ def move_and_show(generator, flag, latent_vector, direction, coeffs):
     # 调用coeffs数组，生成一系列的人脸变化图片
     for i, coeff in enumerate(coeffs):
         new_latent_vector = latent_vector.copy()
-        # 人脸latent与改变人脸特性/表情的向量相混合，只运算前8层（一共18层）
         new_latent_vector[:8] = (latent_vector + coeff * direction)[:8]
-        ax[i].imshow(generate_image(generator, new_latent_vector))
-        ax[i].set_title('Coeff: %0.1f' % coeff)
-    [x.axis('off') for x in ax]
+        new_latent_vector = new_latent_vector.reshape((1, 18, 512))
+        generator.set_dlatents(new_latent_vector)
+        new_person_image = generator.generate_images()[0]
+        canvas = PIL.Image.new('RGB', (1024, 1024), 'white')
+        canvas.paste(PIL.Image.fromarray(new_person_image, 'RGB'), (0, 0))
+
+        if flag == 0:
+            filename = 'new_age.{}.png'
+        if flag == 1:
+            filename = 'new_angle.{}.png'
+        if flag == 2:
+            filename = 'new_gender.{}.png'
+        if flag == 3:
+            filename = 'new_eyes.{}.png'
+        if flag == 4:
+            filename = 'new_glasses.{}.png'
+        if flag == 5:
+            filename = 'new_smile.{}.png'
+        # 将生成的图像保存到文件
+        canvas.save(os.path.join(config.result_dir, filename.format(str(coeff))))
+
+        # 人脸latent与改变人脸特性/表情的向量相混合，只运算前8层（一共18层）
+        # new_latent_vector[:8] = (latent_vector + coeff * direction)[:8]
+        # ax[i].imshow(generate_image(generator, new_latent_vector))
+        # ax[i].set_title('Coeff: %0.1f' % coeff)
+    # [x.axis('off') for x in ax]
     # 显示
-    plt.show()
+    # plt.show()
 
     # 根据看到的人脸变化的效果，输入一个你认为合适的浮点数
     # favor_coeff = float(input('Please input your favourate coeff, such as -1.5 or 1.5: '))
@@ -80,21 +102,8 @@ def move_and_show(generator, flag, latent_vector, direction, coeffs):
     # canvas = PIL.Image.new('RGB', (1024, 1024), 'white')
     # canvas.paste(PIL.Image.fromarray(new_person_image, 'RGB'), ((0, 0)))
     # 根据不同的标志，存入不同的文件名
-    if flag == 0:
-        filename = 'new_age.png'
-    if flag == 1:
-        filename = 'new_angle.png'
-    if flag == 2:
-        filename = 'new_gender.png'
-    if flag == 3:
-        filename = 'new_eyes.png'
-    if flag == 4:
-        filename = 'new_glasses.png'
-    if flag == 5:
-        filename = 'new_smile.png'
-    # 将生成的图像保存到文件
-    # canvas.save(os.path.join(config.generated_dir, filename))
-    plt.savefig(filename)
+
+    # plt.savefig(filename)
 
 
 def main():
