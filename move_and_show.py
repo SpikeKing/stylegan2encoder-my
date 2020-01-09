@@ -66,19 +66,19 @@ def move_and_show(generator, flag, latent_vector, direction, coeffs):
     plt.show()
 
     # 根据看到的人脸变化的效果，输入一个你认为合适的浮点数
-    favor_coeff = float(input('Please input your favourate coeff, such as -1.5 or 1.5: '))
-    new_latent_vector = latent_vector.copy()
+    # favor_coeff = float(input('Please input your favourate coeff, such as -1.5 or 1.5: '))
+    # new_latent_vector = latent_vector.copy()
     # 用输入的浮点数控制生成新的人脸变化
-    new_latent_vector[:8] = (latent_vector + favor_coeff * direction)[:8]
+    # new_latent_vector[:8] = (latent_vector + favor_coeff * direction)[:8]
     # 增加一个维度，以符合generator对向量的要求
-    new_latent_vector = new_latent_vector.reshape((1, 18, 512))
+    # new_latent_vector = new_latent_vector.reshape((1, 18, 512))
     # 将向量赋值给generator
-    generator.set_dlatents(new_latent_vector)
+    # generator.set_dlatents(new_latent_vector)
     # 调用generator生成图片
-    new_person_image = generator.generate_images()[0]
+    # new_person_image = generator.generate_images()[0]
     # 画图，1024x1024
-    canvas = PIL.Image.new('RGB', (1024, 1024), 'white')
-    canvas.paste(PIL.Image.fromarray(new_person_image, 'RGB'), ((0, 0)))
+    # canvas = PIL.Image.new('RGB', (1024, 1024), 'white')
+    # canvas.paste(PIL.Image.fromarray(new_person_image, 'RGB'), ((0, 0)))
     # 根据不同的标志，存入不同的文件名
     if flag == 0:
         filename = 'new_age.png'
@@ -93,7 +93,8 @@ def move_and_show(generator, flag, latent_vector, direction, coeffs):
     if flag == 5:
         filename = 'new_smile.png'
     # 将生成的图像保存到文件
-    canvas.save(os.path.join(config.generated_dir, filename))
+    # canvas.save(os.path.join(config.generated_dir, filename))
+    plt.savefig(filename)
 
 
 def main():
