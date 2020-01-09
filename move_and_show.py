@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 import glob
 
 # 预训练好的网络模型，来自NVIDIA
-Model = './models/stylegan2-ffhq-config-f.pkl'
+Model = './models/generator_yellow-stylegan2-config-f.pkl'
 _Gs_cache = dict()
 
 
